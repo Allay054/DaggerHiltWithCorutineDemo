@@ -16,14 +16,14 @@
         <activity
             android:name="com.allaykhalil.demo.movifetcher.ui.main.MainActivity"
             android:exported="true">
-
-        </activity>
-        <activity android:name=".ui.movieDetail.SingleMovieDetailActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.movieDetail.SingleMovieDetailActivity" android:exported="true">
+
         </activity>
     </application>
 
