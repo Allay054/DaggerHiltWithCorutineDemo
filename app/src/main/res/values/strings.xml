@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MoviFetcher</string>
+    <string name="internet_error">The internet connection appears to be offline.</string>
+    <string name="api_key">6f2ef28c6423ac586d223e818a415794</string>
+</resources>
