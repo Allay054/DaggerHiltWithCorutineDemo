@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -27,7 +28,9 @@
                 android:id="@+id/imageView"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:contentDescription="@string/app_name" />
+                android:clickable="false"
+                android:contentDescription="@string/app_name"
+                bind:avatar="@{viewModel.imagePath}" />
 
             <LinearLayout
                 android:id="@+id/ll_movie_data"
@@ -35,12 +38,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/imageView"
+                android:clickable="false"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
                     android:paddingTop="6dip"
                     android:paddingBottom="2dp"
                     android:text="@{viewModel.name}"
@@ -53,9 +58,10 @@
                     tools:text="" />
 
                 <TextView
-                    android:id="@+id/relaseDate"
+                    android:id="@+id/releaseDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
                     android:paddingBottom="2dp"
                     android:text="@{viewModel.releaseDate}"
                     android:textColor="@color/purple_500"

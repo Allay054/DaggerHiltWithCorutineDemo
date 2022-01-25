@@ -26,6 +26,8 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
             {
                 viewModel.observableArrayList.addAll(it)
             })
+
+        viewModel.fetchAllMoviesList()
     }
 
 

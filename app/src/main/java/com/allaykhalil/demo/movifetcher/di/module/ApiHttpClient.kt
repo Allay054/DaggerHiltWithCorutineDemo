@@ -1,6 +1,5 @@
 package com.allaykhalil.demo.movifetcher.di.module
 
-/*import com.allaykhalil.demo.movifetcher.data.prefs.PreferencesHelper*/
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
@@ -27,11 +26,6 @@ class ApiHttpClient {
             )
         }
 
-//        if (BuildConfig.DEBUG) {
-//            val logging = HttpLoggingInterceptor()
-//            logging.setLevel(HttpLoggingInterceptor.Level.BODY)
-//            httpClient.addInterceptor(logging)
-//        }
         return httpClient.build()
     }
 }

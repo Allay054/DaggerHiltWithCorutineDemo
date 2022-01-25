@@ -21,26 +21,7 @@ class MainViewModel @Inject constructor(var mainRepository: MainRepository) :
     val observableArrayList = ObservableArrayList<MoviesList>()
 
 
-    /* fun fetchFromDbClick() {
-         if (observableArrayList.size > 0)
-             observableArrayList.clear()
-
-         viewModelScope.launch {
-             mainRepository.fetchContactsFromDb().run {
-                 *//*
-                * Add a small delay to reflect the changes on the UI
-                *//*
-                delay(5)
-                if (this != null) {
-                    if (this.isNotEmpty()) {
-                        contactList.value = this
-                    }
-                }
-            }
-        }
-    }*/
-
-    fun fetchFromServerClick() {
+    fun fetchAllMoviesList() {
 
         val getAllMoviesSendModel = GetAllMoviesSendModel(
             GetAllMoviesSendModel.DataParamModel(
@@ -91,14 +72,5 @@ class MainViewModel @Inject constructor(var mainRepository: MainRepository) :
         }
     }
 
-    /*private fun saveRecordsToDb() {
-        contactList.value?.let {
-            if (it.isNotEmpty()) {
-                viewModelScope.launch(Dispatchers.IO) {
-                    dataManager.getDbHelper().deleteAllContacts()
-                    dataManager.getDbHelper().insertContacts(it)
-                }
-            }
-        }
-    }*/
+
 }

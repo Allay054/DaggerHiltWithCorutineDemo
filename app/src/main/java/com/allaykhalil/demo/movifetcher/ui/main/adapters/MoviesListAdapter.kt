@@ -1,8 +1,8 @@
 package com.allaykhalil.demo.movifetcher.ui.main.adapters
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -14,10 +14,14 @@ import com.allaykhalil.demo.movifetcher.ui.base.BaseViewHolder
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import javax.inject.Inject
+import androidx.appcompat.app.AppCompatActivity
+import com.allaykhalil.demo.movifetcher.ui.movieDetail.SingleMovieDetailActivity
+import com.allaykhalil.demo.movifetcher.utils.GlobalData
+
 
 class MoviesListAdapter @Inject constructor() :
     RecyclerView.Adapter<MoviesListAdapter.ItemViewHolder>(), AdapterUpdateListener<MoviesList> {
-    val contactList = ArrayList<MoviesList>()
+    val moviesList = ArrayList<MoviesList>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(
             ItemMoviesBinding.inflate(
@@ -30,37 +34,37 @@ class MoviesListAdapter @Inject constructor() :
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.onBind(position)
-      /*  val strImgUrl =
-            "http://image.tmdb.org/t/p/w185${contactList[position].poster_path}"
-
-        Log.d("=>", strImgUrl)
-        Glide.with(holder.binding.imageView.context)
-            .load(strImgUrl).into(holder.binding.imageView)*/
-
-        //   loadImage(contactList[position].poster_path.toString(), holder.binding.imageView)
+        holder.binding.laData.setOnClickListener {
+            GlobalData.selectedMovieId = moviesList[position].id
+            val intent = Intent(it.context, SingleMovieDetailActivity::class.java)
+            it.context.startActivity(intent)
+            (it.context as AppCompatActivity).finish()
+        }
     }
 
     override fun getItemCount(): Int {
-        return contactList.size
+        return moviesList.size
     }
 
     override fun clearItems() {
-        contactList.clear()
+        moviesList.clear()
         notifyDataSetChanged()
     }
 
     override fun addItems(items: List<MoviesList>, isLoadMore: Boolean) {
         if (!isLoadMore) {
             clearItems()
-            contactList.addAll(items as Collection<MoviesList>)
+            moviesList.addAll(items as Collection<MoviesList>)
             notifyDataSetChanged()
         }
     }
 
     inner class ItemViewHolder(val binding: ItemMoviesBinding) : BaseViewHolder(binding.root) {
         override fun onBind(position: Int) {
-            binding.viewModel = MoviesItemViewModel(contactList[position])
+            binding.viewModel = MoviesItemViewModel(moviesList[position])
+
             binding.executePendingBindings()
+
 
         }
     }
@@ -68,11 +72,14 @@ class MoviesListAdapter @Inject constructor() :
     companion object {
 
         fun loadImage(strImgUrl: String, imageView: ImageView) {
-            Log.d("=>", "http://image.tmdb.org/t/p/w185$strImgUrl")
+
+            val strImg =
+                "http://image.tmdb.org/t/p/w185$strImgUrl"
+            // Log.d("=>", strImg)
             Glide.with(imageView.context)
 
                 .asBitmap()
-                .load("http://image.tmdb.org/t/p/w185$strImgUrl")
+                .load(strImg)
                 .into(object : CustomTarget<Bitmap>() {
 
                     override fun onLoadCleared(placeholder: Drawable?) {

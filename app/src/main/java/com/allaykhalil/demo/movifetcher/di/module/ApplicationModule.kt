@@ -1,6 +1,5 @@
 package com.allaykhalil.demo.movifetcher.di.module
 
-/*import com.allaykhalil.demo.movifetcher.data.prefs.PreferencesHelper*/
 import com.allaykhalil.demo.movifetcher.data.remote.ApiService
 import com.allaykhalil.demo.movifetcher.utils.Constants
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory

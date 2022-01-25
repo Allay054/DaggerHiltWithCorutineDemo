@@ -11,7 +11,7 @@ data class SingleMovieDetailData(
     @SerializedName("backdrop_path")
     val backdrop_path: String? = null,
     @SerializedName("belongs_to_collection")
-    val belongsToCollection: String? = null,
+    val belongsToCollection: BelongsToCollection? = null,
     @SerializedName("budget")
     val budget: String? = null,
     @SerializedName("genres")
@@ -91,4 +91,15 @@ data class SpokenLanguages(
     val iso_639_1: String? = null,
     @SerializedName("name")
     val name: String? = null
+)
+
+data class BelongsToCollection(
+    @SerializedName("id")
+    val id: Int? = null,
+    @SerializedName("poster_path")
+    val poster_path: String? = null,
+    @SerializedName("name")
+    val name: String? = null,
+    @SerializedName("backdrop_path")
+    val backdrop_path: String? = null
 )

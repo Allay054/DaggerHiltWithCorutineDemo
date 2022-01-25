@@ -30,10 +30,11 @@
 
 
         <Button
+            android:visibility="gone"
             android:id="@+id/btn_fetch_contacts_from_server"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.fetchFromServerClick()}"
+            android:onClick="@{() -> viewModel.fetchAllMoviesList()}"
             android:text="From All Movies"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
